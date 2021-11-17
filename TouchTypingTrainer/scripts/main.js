@@ -1,20 +1,28 @@
 document.addEventListener('DOMContentLoaded', async () => {
 
-
-
+  let wordIndex = 0;
+  let words;
+  let texts = await getData();
 
   const boxForText = document.querySelector('.print__text');
+  const modalBtn = document.querySelector('.modal__btn');
+  const modalWrapp = document.querySelector('.modal');
 
-  let wordIndex = 0;
-  let texts = await getData();
-  let content = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регуляркию. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
+  modalBtn.addEventListener('click', async (event) => {
+    let content = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регуляркию. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
 
-  addContent(content);
+    addContent(content);
+    words = document.querySelectorAll('.print__item');
+    words[wordIndex].classList.add('bgdgreen');
+    modalWrapp.classList.add('closed');
 
-  const words = document.querySelectorAll('.print__item');
-  words[wordIndex].classList.add('bgdgreen');
+    setTimeout(()=> {
+      modalWrapp.style.display='none';
+    }, 3000);
 
-  printEvents();
+    printEvents();
+
+  });
 
   // добавляет события для печати текста.
   function printEvents() {
@@ -22,13 +30,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const focus = document.querySelector('.bgdgreen');
 
       if (event.key === focus.textContent) {
-        words[wordIndex].classList.remove('bgdgreen');
-        words[wordIndex].classList.remove('bgdred');
+        words[wordIndex].classList.remove('bgdgreen', 'bgdred');
         words[wordIndex].classList.add('passed');
         wordIndex++;
         words[wordIndex].classList.add('bgdgreen');
       }
-      else if(event.key !== focus.textContent && event.key !== 'Shift') {
+      else if (event.key !== focus.textContent && event.key !== 'Shift') {
         words[wordIndex].classList.add('bgdred');
       }
     });
