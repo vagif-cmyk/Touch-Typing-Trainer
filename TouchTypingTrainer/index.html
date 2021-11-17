@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тренажер слепой печати</title>
-<link rel="stylesheet" href="styles/normalize.css">
-<link rel="stylesheet" href="styles/style.css">
 
-<script defer src="scripts/main.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тренажер слепой печати</title>
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/style.css">
+
+  <script defer src="scripts/main.js"></script>
 </head>
+
 <body>
-<main class="main">
-  <section class="print">
-    <div class="container">
-      <div class="print__wrapp">
-        <!-- <textarea class="textarea" name="textarea" id="textarea" cols="30" rows="10"></textarea>
-        <label for="textarea" class="label"></label> -->
+  <main class="main">
+    <section class="print">
+      <div class="container">
+        <div class="print__wrapp">
+          <div class="print__text"></div>
+          <div class="print__details ">
+            <div class="print__speed speed">
+              <span class="speed__icon"></span>
+              <span class="speed__desc">Скорость</span>
+              <div class="speed__speed">
+                <span>0</span>
+                <span>зн./мин</span>
+              </div>
+            </div>
+            <div class="print__accuracy accuracy">
+              <span class="accuracy__icon"></span>
+              <span class="accuracy__desc">Точность</span>
+              <div class="accuracy__accuracy">
+                <span>100</span>
+                <span>%</span>
+              </div>
+            </div>
+            <div class="print__again again">
+              <a href="/index.html" class="again__link">Заново</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 </body>
+
 </html>

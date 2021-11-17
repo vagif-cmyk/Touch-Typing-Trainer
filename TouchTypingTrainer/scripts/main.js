@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-  const boxForText = document.querySelector('.print__wrapp');
+  const boxForText = document.querySelector('.print__text');
 
   let wordIndex = 0;
   let texts = await getData();
