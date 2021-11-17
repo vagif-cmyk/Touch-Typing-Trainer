@@ -7,16 +7,48 @@
   height: 100vh;
   background-color: rgb(231, 243, 161);
 }
+
 .print {
   padding: 50px;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-.print__text{
+
+.print__wrapp {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   padding: 50px;
-  background-color: rgb(155, 222, 253);
+  color: #333;
+  font-size: 22px;
+  background-color: rgb(231, 239, 243);
+}
+/* .print__item {
+  position: fixed;
+} */
+.word, .space {
+  border-radius: 5px;
+}
+.word {
+}
+.bgdgreen {
+  padding: 0 4px;
+  color: #fff;
+  background-color: #54d754;
+}
+
+.space {
+  padding: 0 6px;
+}
+
+
+.bgdred {
+  background-color: red;
+}
+
+.passed{
+  color: #54d754;
 }
