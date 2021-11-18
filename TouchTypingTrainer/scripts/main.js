@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let text = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регуляркию. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
 
-    addContent('text');
+    addContent(text);
     words = document.querySelectorAll('.print__item');  // получаем все DOM элементы в кот. находятся символы в тексте
     words[wordIndex].classList.add('bgdgreen');     // для первого символа устанавливаем класс означающий фокус(зеленый цвет для элемента).
 

@@ -78,7 +78,7 @@
   width: 40px;
   height: 70px;
   margin-right: 10px;
-  background: url('/images/speed.png') no-repeat center;
+  background: url('../images/speed.png') no-repeat center;
   background-size: cover;
 }
 
@@ -86,7 +86,7 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
-  background: url('/images/aim.png') no-repeat center;
+  background: url('../images/aim.png') no-repeat center;
   background-size: cover;
 }
 
@@ -103,7 +103,7 @@
   display: block;
   padding: 10px;
   padding-left: 40px;
-  background: url('/images/again.png') no-repeat;
+  background: url('../images/again.png') no-repeat;
   background-size: contain;
   color: #54d754;
   text-decoration: none;
