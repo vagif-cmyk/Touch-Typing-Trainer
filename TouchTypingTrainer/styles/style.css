@@ -158,6 +158,7 @@
 }
 
 .modal__result-btn {
+  display: inline-block;
   padding: 10px 20px;
   border-radius: 5px;
   color: #fff;

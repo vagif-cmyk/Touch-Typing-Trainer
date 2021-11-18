@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let totalNumberOfCharacters = 0; // будет использоватся для общего кол-во символов в тексте.
   let countOfErrors = 0;// будет использоватся для подсчета неправильно введенных символов пользователем.
   let countOfCorrect = 0;// будет использоватся для подсчета правильно введенных символов пользователем.
-  let seconds = 1;// будет использоватся для отсчета времени за которое пользователь печатает текст.
+  let seconds = 0;// будет использоватся для отсчета времени за которое пользователь печатает текст.
   let words;  // будет использоватся для записи всех DOM элементов в кот. находятся символы в тексте.
 
   const correctСhar = /^[\w;:=+()*&%$#"!|/\s-]$/; // в эту регулярку входят все символы которые могут находится в набираемом текте.
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let text = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регуляркию. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
 
-    addContent('Ddd ddd Ddd');
+    addContent('text');
     words = document.querySelectorAll('.print__item');  // получаем все DOM элементы в кот. находятся символы в тексте
     words[wordIndex].classList.add('bgdgreen');     // для первого символа устанавливаем класс означающий фокус(зеленый цвет для элемента).
 
@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.addEventListener('keydown', (event) => {
       intervalId = setInterval(() => {
         seconds++;
+        speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
       }, 1000);
     }, { once: true }); // запустить один раз.
   }
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function printEvents(event) {
     const focus = document.querySelector('.bgdgreen');  // берем элемент в "фокусе".
 
-    if (rusСhar.test(event.key)) {  // если введенный символ на русском, открываем модалку и просим установить английскую раскладку и выходим из функции(ничего не делаем).
+    if (rusСhar.test(event.key)) {  // если введенный символ на русском, открываем модалку, просим установить английскую раскладку и выходим из функции(ничего не делаем).
       modalWrapp.classList.remove('closed');
       recomWrapp.style.display = 'block';
       modalWrapp.style.display = 'flex';
@@ -78,12 +79,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     else if (correctСhar.test(event.key)) { // иначе если введенный символ может находится в набираемом текте.
 
-      if (event.key === focus.textContent) { // если введен правельный символ.
+      if (event.key === focus.textContent) { // если введен правильный символ.
         countOfCorrect++;                     // увеличиваем счетчик кол-ва правильно введенных символов пользователем.
         if (countOfCorrect === totalNumberOfCharacters) {  // если кол-ва правильно введенных символов равно общему кол-ву символов в тексте - пользователь напечатал весь текст.
           clearInterval(intervalId);  // останавливаем счетчик времени.
 
-          modalWrapp.classList.remove('closed');  // открываем модалку с инфомацией о печети и выходим из функции.
+          modalWrapp.classList.remove('closed');  // открываем модалку с инфомацией о печати и выходим из функции.
           resultSpeed.textContent = `Скорость ${speed.textContent}`
           resultAccuracy.textContent = `Точность ${percent.textContent} %`
           modalResult.style.display = 'block';
@@ -92,12 +93,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
           return;
         }
-        // если это не конец текста
-        speed.textContent = `${Math.trunc(countOfCorrect / seconds) * 60000} зн./мин`; // поправить формулу.  // отображаем скорость печати.
-        words[wordIndex].classList.remove('bgdgreen', 'bgdred'); // удаляем классы фокуса и ощибки
-        words[wordIndex].classList.add('passed'); // добавляем класс кот. означает что символ уже правильно напечатан.
-        wordIndex++;     // сдвигаем индекс.
-        words[wordIndex].classList.add('bgdgreen'); // добавляем класс фокуса в следующий символ.
+        else { // если это не конец текста
+          // speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
+          words[wordIndex].classList.remove('bgdgreen', 'bgdred'); // удаляем классы фокуса и ощибки
+          words[wordIndex].classList.add('passed'); // добавляем класс кот. означает что символ уже правильно напечатан.
+          wordIndex++;     // сдвигаем индекс.
+          words[wordIndex].classList.add('bgdgreen'); // добавляем класс фокуса в следующий символ.
+        }
       }
 
       else if (event.key !== focus.textContent) {  // если введен неправильный символ
