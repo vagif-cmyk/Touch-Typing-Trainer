@@ -13,11 +13,20 @@
 </head>
 
 <body>
-<div class="modal">
-  <div class="modal__window">
-    <button class="modal__btn">Начать тест</button>
+  <div class="modal">
+    <div class="modal__window">
+      <div class="modal__recom">
+        <div class="modal__recom-text">Поменяйте раскрадку клавиатуры на английскую</div>
+        <button class="modal__recom-btn">Закрыть</button>
+      </div>
+      <div class="modal__result">
+        <div class="modal__result-speed">Скорость</div>
+        <div class="modal__result-accuracy">Точность</div>
+        <a class="modal__result-btn" href="/index.html">Попробывать снова</a>
+      </div>
+      <button class="btn-start">Начать тест</button>
+    </div>
   </div>
-</div>
   <main class="main">
     <section class="print">
       <div class="container">
@@ -36,7 +45,7 @@
               <span class="accuracy__icon"></span>
               <span class="accuracy__desc">Точность</span>
               <div class="accuracy__accuracy">
-                <span>100</span>
+                <span class="accuracy__percent">100</span>
                 <span>%</span>
               </div>
             </div>

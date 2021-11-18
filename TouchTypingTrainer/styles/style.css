@@ -26,7 +26,7 @@
   position: relative;
   padding: 50px;
   color: #333;
-  font-size: 22px;
+  font-size: 26px;
   background-color: rgb(227, 234, 238);
 }
 
@@ -55,8 +55,6 @@
 .word, .space {
   border-radius: 5px;
 }
-
-.word {}
 
 .bgdgreen {
   padding: 0 4px;
@@ -96,6 +94,11 @@
   margin-right: 10px;
 }
 
+.accuracy__accuracy, .speed__speed {
+  font-size: 32px;
+  color: rgb(69, 96, 252);
+}
+
 .again__link {
   display: block;
   padding: 10px;
@@ -130,13 +133,56 @@
   background-color: rgb(245, 236, 141);
 }
 
-.modal__btn {
+.btn-start {
   padding: 8px 18px;
   border: none;
   border-radius: 5px;
   color: #fff;
   background-color: blueviolet;
   box-shadow: 0 0 8px #333;
+  cursor: pointer;
+}
+
+.modal__result {
+  display: none;
+  text-align: center;
+  width: 100%;
+}
+
+.modal__result-accuracy, .modal__result-speed {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 32px;
+  color: #fff;
+  background-color: rgb(122, 122, 240);
+}
+
+.modal__result-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #54d754;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal__recom {
+  display: none;
+  text-align: center;
+}
+.modal__recom-text {
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #54d754;
+}
+.modal__recom-btn {
+  display: inline-block;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  background-color: rgb(145, 232, 243);
+  cursor: pointer;
 }
 .closed {
   z-index: 0;
