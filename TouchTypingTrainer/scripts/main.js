@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let seconds = 0;// будет использоватся для отсчета времени за которое пользователь печатает текст.
   let words;  // будет использоватся для записи всех DOM элементов в кот. находятся символы в тексте.
 
-  const correctСhar = /^[\w.,;:=+()*&%$#"!|/\s-]$/; // в эту регулярку входят все символы которые могут находится в набираемом текте.
+  const correctСhar = /^[\w.,?;:=+()*&%$#"!|/\s-]$/; // в эту регулярку входят все символы которые могут находится в набираемом текте.
   const rusСhar = /^[А-Яа-я]$/; // символы на русском языке.
 
   // получаем все DOM элементы с кот. будем работать.
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function installContent() {
     btnStart.style.display = 'none'; //Убираем кнопку "Начать тест" из модалки.
 
-    let text = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регуляркию. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
+    let text = texts[0].replace(/\s+/gm, ' '); // убираем лишние пробелы с помощью регулярки. Добавлены флаги g(искать глобально) и m(искать в многострочной строке)
 
     addContent(text);
     words = document.querySelectorAll('.print__item');  // получаем все DOM элементы в кот. находятся символы в тексте
@@ -59,11 +59,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // при первом вводе символа запустить таймер
     document.addEventListener('keydown', (event) => {
-        intervalId = setInterval(() => {
-          seconds++;
+      if(correctСhar.test(event.key)) {  // если введенный символ может находится в набираемом текте.
+        clearInterval(intervalId);    // отстанавливаем setInterval
+        intervalId = setInterval(() => {  // запускаем setInterval
+          seconds++;     // увеличиваем потраченое на печать время.
           speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
         }, 1000);
-    }, { once: true }); // запустить один раз.
+      }
+    });
   }
 
   // добавляет события для печати текста.
