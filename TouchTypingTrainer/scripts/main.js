@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let seconds = 0;// будет использоватся для отсчета времени за которое пользователь печатает текст.
   let words;  // будет использоватся для записи всех DOM элементов в кот. находятся символы в тексте.
 
-  const correctСhar = /^[\w;:=+()*&%$#"!|/\s-]$/; // в эту регулярку входят все символы которые могут находится в набираемом текте.
+  const correctСhar = /^[\w.,;:=+()*&%$#"!|/\s-]$/; // в эту регулярку входят все символы которые могут находится в набираемом текте.
   const rusСhar = /^[А-Яа-я]$/; // символы на русском языке.
 
   // получаем все DOM элементы с кот. будем работать.
@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // при первом вводе символа запустить таймер
     document.addEventListener('keydown', (event) => {
-      intervalId = setInterval(() => {
-        seconds++;
-        speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
-      }, 1000);
+        intervalId = setInterval(() => {
+          seconds++;
+          speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
+        }, 1000);
     }, { once: true }); // запустить один раз.
   }
 
@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           return;
         }
         else { // если это не конец текста
-          // speed.textContent = `${Math.round(countOfCorrect / seconds * 60)} зн./мин`; // отображаем скорость печати.
           words[wordIndex].classList.remove('bgdgreen', 'bgdred'); // удаляем классы фокуса и ощибки
           words[wordIndex].classList.add('passed'); // добавляем класс кот. означает что символ уже правильно напечатан.
           wordIndex++;     // сдвигаем индекс.
